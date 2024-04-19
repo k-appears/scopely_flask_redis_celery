@@ -1,0 +1,58 @@
+[tool.poetry]
+name = "scopely"
+version = "0.1.0"
+description = "Scopely Server Engineer Backend Test"
+authors = ["KKKK <KKKKK>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.2"
+Flask-API = "^3.1"
+pytest-mock = "^3.14.0"
+redis-om = "^0.2.2"
+celery = "^5.3.6"
+flask-jwt-extended = "^4.6.0"
+gunicorn = "^22.0.0"
+werkzeug = "2.3.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+pytest-mock = "^3.14.0"
+flake8 = "^7.0.0"
+mypy = "^1.9.0"
+black = "^24.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
+
+
+[tool.black]
+line-length = 120
+target-version = ["py311"]
+exclude = '''
+/(
+    \.git
+    | \.venv
+)/
+'''
+
+[tool.isort]
+profile = "black"
+src_paths = ["app"]
+
+[tool.mypy]
+check_untyped_defs = true
+strict = true
+exclude = ["^.*test_.*\\.py$", "^.*conftest\\.py$"]
+
+
+
+
+[virtualenvs]
+in-project = true
